@@ -1,0 +1,74 @@
+<!-- <div class="book">
+    <div class="img-container" *ngIf="showInfo">
+        <button (click)="changeCurImage(false)">
+            << Prev </button>
+                <button (click)="changeCurImage(true)"> Next >> </button>
+                <div>
+                    <img [src]="curImage">
+                </div>
+    </div>
+
+    <h3 [ngClass]="{old: isOld()}">Назва: {{ book.name }}</h3>
+
+    <div *ngIf="showInfo; then btnHide else btnShow"></div>
+    <ng-template #btnHide>
+        <button (click)="showInfo=false">Згорнути</button>
+    </ng-template>
+    <ng-template #btnShow>
+        <button (click)="showInfo=true">Детальніше</button>
+    </ng-template>
+
+    <div class="info" *ngIf="showInfo">
+        <div class="edit-book-name">
+            <input type="text" [(ngModel)]="book.name" (ngModelChange)="onChange()">
+            <input #bookName type="text" (input)="changeBookName(bookName.value)">
+            <button (click)="changeBookName(bookName.value)">Змінити</button>
+        </div>
+        <p class="author">Автор: {{ book.author }}</p>
+        <p class="genre">Жанр: {{ book.genre }}</p>
+        <p>Кількість книжок автора: {{ book.booksQuantity }}</p>
+        <p>Книжки: {{ books }}</p>
+        <p>Інформація про автора: </p>
+        <pre>{{ authorInfo | json }}</pre> 
+    </div>
+</div> -->
+
+<div class="row align-wrapper">
+    <div class="col m3 offset-m3 s6 center-align">
+        <h5>{{book.name}}</h5>
+    </div>
+    <div class="col m3 s6 center-align">
+        <a class="btn-floating waves-effect waves-light blue" (click)="showInfo=!showInfo">
+            <i *ngIf="showInfo" class="material-icons">
+                keyboard_arrow_up
+            </i>
+            <i *ngIf="!showInfo" class="material-icons">
+                keyboard_arrow_down
+            </i>
+        </a>
+        <a [routerLink]="'/borrowers/' + book.name" class="btn-floating waves-effect waves-light blue-grey">
+            <i class="material-icons">
+                view_headline
+            </i>
+        </a>
+    </div>
+</div>
+
+
+<div class="info" *ngIf="showInfo">
+    <div class="input-field">
+        <input id="name" [(ngModel)]="book.name" type="text" class="validate">
+        <label for="name" class="active">Назва книжки</label>
+    </div>
+    <div class="input-field">
+        <input id="author" [(ngModel)]="book.author" type="text" class="validate">
+        <label for="author" class="active">Автор</label>
+    </div>
+    <div class="input-field">
+        <input id="genre" [(ngModel)]="book.genre" type="text" class="validate">
+        <label for="genre" class="active">Жанр</label>
+    </div>
+    <a class="rem-row btn-floating waves-effect waves-light red" (click)="delBook()">
+        <i class="material-icons">delete</i>
+    </a>
+</div>

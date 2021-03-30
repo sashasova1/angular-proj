@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col m6 offset-m3 s12">
+        <a *ngIf="!showForm" (click)="showForm=true" class="btn-floating btn-large waves-effect waves-light green">
+            <i class="material-icons">add</i>
+        </a>
+        <form *ngIf="showForm" #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)">
+            <h5>Нова книжка</h5>
+            <div class="input-field">
+                <input id="name" name="name" ngModel required type="text">
+                <label for="name" class="active">Назва книжки</label>
+            </div>
+            <div class="input-field">
+                <input id="author" name="author" ngModel required type="text">
+                <label for="author" class="active">Автор</label>
+            </div>
+            <div class="input-field">
+                <input id="genre" name="genre" ngModel required type="text">
+                <label for="genre" class="active">Жанр</label>
+            </div>
+
+            <div class="form-book">
+                <button type="button" (click)="showForm=false"
+                    class="rem-row btn-floating waves-effect waves-light left blue-gray">
+                    <i class="material-icons">keyboard_arrow_up</i>
+                </button>
+                <button type="submit" [disabled]="myForm.invalid"
+                    class="rem-row btn-floating waves-effect waves-light green right">
+                    <i class="material-icons">done</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

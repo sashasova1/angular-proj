@@ -1,0 +1,21 @@
+<div class="row valign-wrapper">
+    <div class="col m6 offset-m3 s12">
+        <a [routerLink]="'/books'" class="btn-floating waves-effect waves-light blue-grey">
+            <i class="material-icons">
+                keyboard_arrow_left
+            </i>
+        </a>
+    </div>
+</div>
+
+<div class="row valign-wrapper">
+    <div class="col m6 offset-m3 s12">
+        <h5 class="center-align">Список позичальників</h5>
+    </div>
+</div>
+
+<div *ngFor="let borrower of borrowers" class="row valign-wrapper">
+    <div class="col m6 offser-m3 s12">
+        <h6>{{borrower.borrower}}</h6>
+    </div>
+</div>
